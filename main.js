@@ -1,11 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 
 function createWindow () {
-<<<<<<< HEAD
-  // Cree la fenetre du navigateur.
-=======
   // Create the browser window.
->>>>>>> origin/Joyston
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -14,13 +10,6 @@ function createWindow () {
     }
   })
 
-<<<<<<< HEAD
-  // et charger le fichier index.html de l'application.
-  win.loadFile('index.html')
-}
-
-app.whenReady().then(createWindow)
-=======
   // and load the index.html of the app.
   win.loadFile('index.html')
 
@@ -52,4 +41,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
->>>>>>> origin/Joyston
