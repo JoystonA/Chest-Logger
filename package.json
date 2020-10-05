@@ -1,0 +1,26 @@
+{
+  "name": "chest-logger",
+  "version": "1.0.0",
+  "description": "Application de stockage de mot de passe sécurisée",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoystonA/Chest-Logger.git"
+  },
+  "author": "ESIEE Paris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoystonA/Chest-Logger/issues"
+  },
+  "homepage": "https://github.com/JoystonA/Chest-Logger#readme",
+  "devDependencies": {
+    "electron": "^10.1.3"
+  }
+}
