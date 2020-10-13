@@ -26,8 +26,7 @@
             <div class="navbar-expand-sm">
                 <ul class="navbar-nav ml-auto navbar_css">
                     <li class="nav-item">
-                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil" href="index.html">Mot de
-                            passe</a>
+                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil" href="index.html">Portefeuille</a>
                     </li>
                     <li class="nav-item">
                         <a class="js-scroll-trigger ref_bouton active" id="ref_bouton_param" href="moncompte.html">Mon
@@ -57,12 +56,14 @@
                         </div>
                         <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <button type="button" data-toggle="modal" data-target="#modifier_mdp_user"
-                                class="btn btn-primary btn-sm" shadow-none">Modifier le mot de passe</button>
+                                class="btn btn-primary btn-sm shadow-none">Modifier le mot de passe</button>
+                            <button type="button" data-toggle="modal" data-target="#modifier_cmp_user"
+                                class="btn btn-primary btn-sm shadow-none modifier_cmp">Modifier le compte</button>
                         </div>
                     </div>
                     <div class="card-header div_info_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <label id="nom_user_parametre">ANTON RAVEENDRAN Joyston</label>
-                        <label id="email_user_parametre">joyston.antonraveendran@edu.esiee.fr</label>
+                        <label id="nom_user_parametre"></label>
+                        <label id="email_user_parametre"></label>
                     </div>
                 </div>
             </div>
@@ -86,13 +87,6 @@
                 <div class="modal-body">
                     <form method="post">
                         <fieldset>
-                            <!--EMAIL-->
-                            <div class="form-group">
-                                <label class="titre_input" for="email_modif_mdp">E-mail</label>
-                                <input type="text" class="shadow-none form-control form-control-user"
-                                    name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
-                            </div>
-
                             <!--Ancien Mot de passe-->
                             <div class="form-group">
                                 <label class="titre_input" for="ancien_mdp">Ancien mot de passe</label>
@@ -130,9 +124,62 @@
         </div>
     </div>
 
+    <!-------------------------------------------------------------------------------------------------------------- 
+    ------------------------------------- modal modification du compte user ----------------------------------------
+    ---------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modifier_cmp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modification du compte</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <!--NOM-->
+                            <div class="form-group">
+                                <label class="titre_input" for="nom_modif">Nom</label>
+                                <input type="text" class="shadow-none form-control form-control-user"
+                                    name="nom_modif" id="nom_modif" placeholder="Nom"></input>
+                            </div>
+
+                            <!--PRENOM-->
+                            <div class="form-group">
+                                <label class="titre_input" for="prenom_modif">Prénom</label>
+                                <input type="text" class="shadow-none form-control form-control-user"
+                                    name="prenom_modif" id="prenom_modif" placeholder="Prénom"></input>
+                            </div>
+
+                            <!--EMAIL-->
+                            <div class="form-group">
+                                <label class="titre_input" for="email_modif">E-mail</label>
+                                <input type="email" class="shadow-none form-control form-control-user"
+                                    name="email_modif" id="email_modif" placeholder="E-mail"></input>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" id="modifier_cmp" name="modifier_cmp" value="Modifier"
+                                    class="btn btn-primary btn-smshadow-none"></input>
+                            </div>
+<!-- 
+                            <button type="button" id="modifier_cmp"
+                                class="btn btn-primary btn-sm shadow-none">Modifier</button> -->
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="content/vendor/jquery/js/jquery-3.5.1.slim.min.js"></script>
     <script src="content/vendor/jquery/js/jquery-3.5.1.js"></script>
     <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="content\js\parametres.js"></script>
+
 </body>
 
 </html>

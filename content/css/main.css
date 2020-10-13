@@ -211,3 +211,7 @@ body {
   border          : none;
   padding         : 1rem 1rem;
 }
+
+.modifier_cmp{
+  margin-right:5px;
+}
