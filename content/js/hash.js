@@ -1,9 +1,9 @@
-function hash() {
-    const secret = 'abcdefg';
-    const hash = crypto.createHmac('sha256', secret)
-        .update('I love cupcakes')
+const crypto = require('crypto');
+function hash(mdp) {
+    const key = '@]@FKr758+4cA(KcsLd5';
+    const hash = crypto.createHmac('sha256', key)
+        .update(mdp)
         .digest('hex');
-    console.log(hash);
+    return hash;
 }
 
-hash()

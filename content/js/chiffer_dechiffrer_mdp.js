@@ -25,11 +25,3 @@ function decrypt(text) {
     return decrypted.toString();
 }
 
-var output = encrypt("toto");
-//localStorage.setItem('mdp',output.encryptedData);
-var getCipher = localStorage.getItem('mdp');
-console.log('cipher :'+getCipher)
-
-console.log(output.encryptedData);
-
-console.log(decrypt(output));
