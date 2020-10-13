@@ -26,10 +26,12 @@
             <div class="navbar-expand-sm">
                 <ul class="navbar-nav ml-auto navbar_css">
                     <li class="nav-item">
-                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil" href="index.html">Mot de passe</a>
+                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil" href="index.html">Mot de
+                            passe</a>
                     </li>
                     <li class="nav-item">
-                        <a class="js-scroll-trigger ref_bouton active" id="ref_bouton_param" href="moncompte.html">Mon compte</a>
+                        <a class="js-scroll-trigger ref_bouton active" id="ref_bouton_param" href="moncompte.html">Mon
+                            compte</a>
                     </li>
                 </ul>
             </div>
@@ -43,15 +45,90 @@
         </div>
     </header>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-5 col-md-12 col-lg-12 centreVerticalement">
-                    test
+    </br>
+
+    <div class="container-fluid">
+        <div class="row fondu">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="row perso_no_margin">
+                        <div class="card-header col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <h4 class="m-0">Mon compte</h6>
+                        </div>
+                        <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <button type="button" data-toggle="modal" data-target="#modifier_mdp_user"
+                                class="btn btn-primary btn-sm" shadow-none">Modifier le mot de passe</button>
+                        </div>
+                    </div>
+                    <div class="card-header div_info_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <label id="nom_user_parametre">ANTON RAVEENDRAN Joyston</label>
+                        <label id="email_user_parametre">joyston.antonraveendran@edu.esiee.fr</label>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    </div>
+
+    <!-------------------------------------------------------------------------------------------------------------- 
+    ------------------------------------- modal modification du mot de passe ---------------------------------------
+    ---------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modifier_mdp_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modification du mot de passe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <!--EMAIL-->
+                            <div class="form-group">
+                                <label class="titre_input" for="email_modif_mdp">E-mail</label>
+                                <input type="text" class="shadow-none form-control form-control-user"
+                                    name="email_modif_mdp" id="email_modif_mdp" placeholder="E-mail" readonly></input>
+                            </div>
+
+                            <!--Ancien Mot de passe-->
+                            <div class="form-group">
+                                <label class="titre_input" for="ancien_mdp">Ancien mot de passe</label>
+                                <input type="password" class="shadow-none form-control form-control-user"
+                                    name="ancien_mdp" id="ancien_mdp" placeholder="Ancien mot de passe"
+                                    autocomplete="off" required></input>
+                            </div>
+
+                            <!--Nouveau mot de passe-->
+                            <div class="form-group">
+                                <label class="titre_input" for="nouveau_mdp">Nouveau mot de passe</label>
+                                <input type="password" class="shadow-none form-control form-control-user"
+                                    name="nouveau_mdp" id="nouveau_mdp" placeholder="Nouveau mot de passe"
+                                    autocomplete="off" required></input>
+                            </div>
+
+                            <!--Confirmation nouveau Mot de passe-->
+                            <div class="form-group">
+                                <label class="titre_input" for="confirmation_nouveau_mdp">Confirmez votre nouveau mot de
+                                    passe</label>
+                                <input type="password" class="shadow-none form-control form-control-user"
+                                    name="confirmation_nouveau_mdp" id="confirmation_nouveau_mdp"
+                                    placeholder="Confirmez votre nouveau mot de passe" autocomplete="off"
+                                    required></input>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="submit" name="modifier_mdp_user" value="Modifier"
+                                    class="btn btn-primary btn-smshadow-none"></input>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="content/vendor/jquery/js/jquery-3.5.1.slim.min.js"></script>
     <script src="content/vendor/jquery/js/jquery-3.5.1.js"></script>

@@ -110,7 +110,7 @@ body {
   width:100%;
   height: 80px;
   /*background-color: #aaaaaa6b;*/
-  background: url(../img/slide2.jpg) no-repeat center; 
+  background: url(../img/slide5.jpg) no-repeat center; 
   background:auto;
   -webkit-background:auto;
   z-index: -1;	
@@ -124,11 +124,90 @@ body {
   font-weight: bold;
   margin-top: 8px;
   padding-top:20px;
-  color:#00274E;
+  color:#fff;
 }
 
 .centreVerticalement {
   display: inline-block;
   vertical-align: middle;
   float: none;
+}
+
+/*------------------------- PARAMETRES --------------------------*/
+.fondu {
+  animation        : fadein 2s;
+  -moz-animation   : fadein 2s;
+  /* Firefox */
+  -webkit-animation: fadein 2s;
+  /* Safari and Chrome */
+  -o-animation     : fadein 2s;
+  /* Opera */
+}
+
+@keyframes fadein {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+
+  /* Firefox */
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+
+  /* Safari and Chrome */
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+@-o-keyframes fadein {
+
+  /* Opera */
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.perso_no_margin {
+  margin: 0;
+}
+
+.perso_header_right {
+  display       : flex;
+  flex-wrap     : nowrap;
+  flex-direction: row-reverse;
+}
+
+.div_info_user {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+}
+
+.card-header {
+  background-color: var(--card-content-color) !important;
+  border          : none;
+  padding         : 1rem 1rem;
 }
