@@ -8,7 +8,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "rimraf git-checker-* && electron-packager . --platform=linux,win32 --arch=ia32 --icon=app --overwrite",
     "start": "electron ."
   },
   "repository": {
