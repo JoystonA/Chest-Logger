@@ -20,5 +20,6 @@
     "url": "https://github.com/JoystonA/Chest-Logger/issues"
   },
   "homepage": "https://github.com/JoystonA/Chest-Logger#readme",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {}
 }
