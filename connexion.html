@@ -17,10 +17,11 @@
 
 <body class="text-center connexion_page">
     <form class="form-signin">
-        <a class="navbar-brand js-scroll-trigger text_nav title_app">
+        <a class="navbar-brand js-scroll-trigger text_nav title_app_login">
             <i class="fas fa-lock logo"></i>
             CHEST-LOGGER
-        </a>
+        </a>      
+        
         <label for="inputUsername" class="sr-only">Nom d'utilisateur</label>
         <input type="text" id="inputUsername" class="form-control" placeholder="Nom d'utilisateur" required>
 
@@ -29,6 +30,11 @@
         
         <button type="button" id="connexion"
         class="btn btn-primary btn-sm shadow-none">Connexion</button>
+        
+        </br>
+        
+        <label id='erreur'></label>   
+
     </form>
 
     <script src="content/vendor/jquery/js/jquery-3.5.1.slim.min.js"></script>

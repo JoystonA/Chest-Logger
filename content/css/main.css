@@ -1,3 +1,5 @@
+/*-------------------------------------------------------------*/
+/*--------------------------- POLICES -------------------------*/ 
 @font-face {
   font-family: "Unique";
   src: url("../fonts/Unique_Line.ttf");
@@ -12,166 +14,14 @@
   font-family: "CaviarDreams";
   src: url("../fonts/CaviarDreams.ttf");
 }
-
 /*-------------------------------------------------------------*/
-/*------------------------- CONNEXION -------------------------*/ 
+/*-------------------------- GENERALE -------------------------*/ 
 body {
-  /*display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;*/
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
 }
 
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-.form-signin .checkbox {
-  font-weight: 400;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  padding-top: 25px;
-  font-size: 15px;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  background: none;
-}
-
-.form-signin .form-control:focus {
-  z-index: 2;
-  box-shadow: none;
-}
-.form-signin input[type="text"] { 
-  margin-bottom: 8px;
-  margin-top: 50px;
-  border-radius: 0;
-  
-  
-}
-.form-signin input[type="password"] {
-  margin-bottom: 25px;
-  margin-top: 10px;
-  border-radius: 0;
-  
-}
-
-
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
-.mdp{
-  padding-top: 7px;
-  padding-bottom: 25px;
-  
-}
-
-.mdp a{
-  color: #9BB8CA;
-  font-size: 15px;
-}
-
-::placeholder{
-  color: #9BB8CA !important;
-}
-
-.mb-4{
-margin-bottom: 40px !important;
-position: static;
-}
-
-.connexion_page{
-  background: url(../img/fond_2.png) no-repeat center; 
-  background:auto;
-  -webkit-background:auto;
-  z-index: -1;	
-}
-
-::placeholder{
-  color:black !important;
-  font-weight: bold;
-}
-/*------------------------------ TOP BAR --------------------------------*/
-.topbar_bg_color{
-  background-color: #00274E;
-}
-
-.logo, .title_app{
-  opacity: 0.75;
-}
-
-.title_app:hover{
-  opacity: 1;
-  cursor: pointer;
-}
-
-.title_app{
-  font-family: 'Unique';
-}
-
-.ref_bouton{
-  color:#fff;
-  padding-right: 15px;
-  font-weight: bold;
-  opacity: 0.5;
-  font-family: 'CaviarDreams','Typographica',Helvetica,Arial,sans-serif;
-}
-
-.ref_bouton:hover,.ref_bouton.active{
-  opacity: 1;
-  color: #fff;
-  text-decoration: none;
-}
-
-.image_barre{
-  width:100%;
-  height: 80px;
-  /*background-color: #aaaaaa6b;*/
-  background: url(../img/slide5.jpg) no-repeat center; 
-  background:auto;
-  -webkit-background:auto;
-  z-index: -1;	
-}
-
-.text{		
-  font-family: 'CaviarDreams',Helvetica,Arial,sans-serif;
-  text-align: center;
-  font-size: 2em; 
-  text-decoration: underline;
-  font-weight: bold;
-  margin-top: 8px;
-  padding-top:20px;
-  color:#fff;
-}
-
-.centreVerticalement {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
-}
-
-/*------------------------- PARAMETRES --------------------------*/
 .fondu {
   animation        : fadein 2s;
   -moz-animation   : fadein 2s;
@@ -250,6 +100,171 @@ position: static;
   padding         : 1rem 1rem;
 }
 
-.modifier_cmp{
+.centreVerticalement {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+/*-------------------------------------------------------------*/
+/*------------------------- CONNEXION -------------------------*/ 
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  padding-top: 25px;
+  font-size: 15px;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  background: none;
+  border: 1px solid #000;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+  box-shadow: none;
+}
+.form-signin input[type="text"] { 
+  margin-bottom: 8px;
+  margin-top: 50px;
+  border-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 25px;
+  margin-top: 10px;
+  border-radius: 0;
+  
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.mdp{
+  padding-top: 7px;
+  padding-bottom: 25px;
+  
+}
+
+.mdp a{
+  color: #9BB8CA;
+  font-size: 15px;
+}
+
+.mb-4{
+margin-bottom: 40px !important;
+position: static;
+}
+
+.connexion_page{
+  background: url(../img/slide6.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.title_app_login{
+  font-family: 'Unique';
+  color: white;
+}
+
+#inputUsername::placeholder, #inputPassword::placeholder{
+  font-weight: bold;
+  color: white !important;
+}
+
+#inputUsername, #inputPassword{
+  font-weight: bold;
+  color: white !important;
+  border: 1px solid #fff;
+}
+/*-------------------------------------------------------------*/
+/*--------------------------- TOP BAR -------------------------*/ 
+.topbar_bg_color{
+  background-color: #00274E;
+}
+
+.logo, .title_app{
+  opacity: 0.75;
+}
+
+.title_app:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.title_app{
+  font-family: 'Unique';
+}
+
+.ref_bouton{
+  color:#fff;
+  padding-right: 15px;
+  font-weight: bold;
+  opacity: 0.5;
+  font-family: 'CaviarDreams','Typographica',Helvetica,Arial,sans-serif;
+}
+
+.ref_bouton:hover,.ref_bouton.active{
+  opacity: 1;
+  color: #fff;
+  text-decoration: none;
+}
+
+.image_barre{
+  width:100%;
+  height: 80px;
+  background: url(../img/slide5.jpg) no-repeat center; 
+  background:auto;
+  -webkit-background:auto;
+  z-index: -1;	
+}
+
+.text{		
+  font-family: 'CaviarDreams',Helvetica,Arial,sans-serif;
+  text-align: center;
+  font-size: 2em; 
+  text-decoration: underline;
+  font-weight: bold;
+  margin-top: 8px;
+  padding-top:20px;
+  color:#fff;
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------- PAGES ----------------------------*/ 
+.modifier_cmp, .nouveau_cpl{
   margin-right:5px;
 }
+
+button{
+  outline: none !important;
+}
+
+.modal-footer{
+  justify-content: flex-start;
+}/*OVERRIDE*/

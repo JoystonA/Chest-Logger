@@ -4,6 +4,7 @@ const algorithm = 'aes-256-cbc';
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
+/* -------------------------- FONCTIONS ----------------------------------*/
 function encrypt(text) {
     let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
     let encrypted = cipher.update(text);

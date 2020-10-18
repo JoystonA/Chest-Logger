@@ -26,11 +26,17 @@
             <div class="navbar-expand-sm">
                 <ul class="navbar-nav ml-auto navbar_css">
                     <li class="nav-item">
-                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil" href="index.html">Portefeuille</a>
+                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_accueil"
+                            href="index.html">Portefeuille</a>
                     </li>
                     <li class="nav-item">
                         <a class="js-scroll-trigger ref_bouton active" id="ref_bouton_param" href="moncompte.html">Mon
                             compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="js-scroll-trigger ref_bouton" id="ref_bouton_deconnexion" href="connexion.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -68,7 +74,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-------------------------------------------------------------------------------------------------------------- 
@@ -117,8 +122,6 @@
                                 <input type="submit" id="modifier_mdp" name="modifier_mdp" value="Modifier"
                                     class="btn btn-primary btn-smshadow-none"></input>
                             </div>
-
-                           
                         </fieldset>
                     </form>
                 </div>
@@ -145,8 +148,8 @@
                             <!--NOM-->
                             <div class="form-group">
                                 <label class="titre_input" for="nom_modif">Nom</label>
-                                <input type="text" class="shadow-none form-control form-control-user"
-                                    name="nom_modif" id="nom_modif" placeholder="Nom"></input>
+                                <input type="text" class="shadow-none form-control form-control-user" name="nom_modif"
+                                    id="nom_modif" placeholder="Nom"></input>
                             </div>
 
                             <!--PRENOM-->
@@ -165,11 +168,8 @@
 
                             <div class="modal-footer">
                                 <input type="submit" id="modifier_cmp" name="modifier_cmp" value="Modifier"
-                                    class="btn btn-primary btn-smshadow-none"></input>
+                                    class="btn btn-primary btn-sm shadow-none"></input>
                             </div>
-<!-- 
-                            <button type="button" id="modifier_cmp"
-                                class="btn btn-primary btn-sm shadow-none">Modifier</button> -->
                         </fieldset>
                     </form>
                 </div>
@@ -177,6 +177,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="content/vendor/jquery/js/jquery-3.5.1.slim.min.js"></script>
     <script src="content/vendor/jquery/js/jquery-3.5.1.js"></script>
     <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -184,5 +185,4 @@
     <script src="content/js/hash.js"></script>
 
 </body>
-
 </html>
