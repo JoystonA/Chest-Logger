@@ -192,15 +192,19 @@ position: static;
   color: white;
 }
 
-#inputUsername::placeholder, #inputPassword::placeholder{
+#inputUsername::placeholder, #inputPassword::placeholder,#createUsername::placeholder,#createPassword::placeholder, #createConfirmPassword::placeholder {
   font-weight: bold;
   color: white !important;
 }
 
-#inputUsername, #inputPassword{
+#inputUsername, #inputPassword,#createUsername, #createPassword,  #createConfirmPassword{
   font-weight: bold;
   color: white !important;
   border: 1px solid #fff;
+}
+
+#createPassword{
+  margin-bottom: 8px !important;
 }
 /*-------------------------------------------------------------*/
 /*--------------------------- TOP BAR -------------------------*/ 
