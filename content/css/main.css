@@ -267,9 +267,9 @@ button{
   outline: none !important;
 }
 
-.modal-footer{
+.perso_footer_1{
   justify-content: flex-start;
-}/*OVERRIDE*/
+}
 
 .slider_lenght{
   height: 8px;
