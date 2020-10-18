@@ -145,7 +145,6 @@ body {
   margin-bottom: 25px;
   margin-top: 10px;
   border-radius: 0;
-  
 }
 
 .bd-placeholder-img {
@@ -166,7 +165,6 @@ body {
 .mdp{
   padding-top: 7px;
   padding-bottom: 25px;
-  
 }
 
 .mdp a{
@@ -268,3 +266,21 @@ button{
 .modal-footer{
   justify-content: flex-start;
 }/*OVERRIDE*/
+
+.slider_lenght{
+  height: 8px;
+  padding: 0;
+}
+
+.slider_perso{
+  padding-bottom: 10px;
+}
+
+.breakword{
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  width: 340px;
+  text-align: justify;
+  padding-right: 30px;
+}
+

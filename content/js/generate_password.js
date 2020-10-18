@@ -7,17 +7,39 @@ var numbers = document.getElementById('numbers')
 var symbols = document.getElementById('symbols')
 var lowercase = document.getElementById('lowercase')
 var uppercase = document.getElementById('uppercase')
+var slider = document.getElementById('slider')
 
 /* ------------------------- TRAITEMENTS --------------------------------*/
 numbers.checked = "true"
 symbols.checked = "true"
 lowercase.checked = "true"
 uppercase.checked = "true"
+slider.value = 20;
 
-generate_password(numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
 
 refresh_generation.addEventListener('click',function(){
-    generate_password(numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+})
+
+numbers.addEventListener('click',function(){
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+})
+
+symbols.addEventListener('click',function(){
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+})
+
+lowercase.addEventListener('click',function(){
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+})
+
+uppercase.addEventListener('click',function(){
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
+})
+
+slider.addEventListener('click',function(){
+    generate_password(slider.value,numbers.checked,symbols.checked,lowercase.checked,uppercase.checked)
 })
 
 copier_mdp.addEventListener('click',docopy);
@@ -59,10 +81,10 @@ function docopy() {
     }
 }
 
-function generate_password(numbers,symbols,lowercase,uppercase){
+function generate_password(lenght,numbers,symbols,lowercase,uppercase){
     try{
         var password = generator.generate({
-            length: 20,
+            length: lenght,
             numbers: numbers,
             symbols: symbols,
             lowercase: lowercase,
@@ -79,3 +101,12 @@ function generate_password(numbers,symbols,lowercase,uppercase){
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+$(document).ready(function() {
+    const $valueSpan = $('.valueSpan');
+    const $value = $('#slider');
+    $valueSpan.html($value.val());
+    $value.on('input change', () => {
+      $valueSpan.html($value.val());
+    });
+  });
