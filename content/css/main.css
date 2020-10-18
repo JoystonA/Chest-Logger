@@ -259,7 +259,7 @@ position: static;
 
 /*-------------------------------------------------------------*/
 /*-------------------------- PAGES ----------------------------*/ 
-.modifier_cmp, .nouveau_cpl{
+.modifier_cmp, .ajout_mdp{
   margin-right:5px;
 }
 
@@ -288,3 +288,7 @@ button{
   padding-right: 30px;
 }
 
+.perso_pencil:hover, .perso_trash:hover, .perso_eye:hover{
+  color:grey;
+  cursor: pointer;
+}

@@ -61,18 +61,88 @@
                         <div class="card-header perso_header_right col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                             <button type="button" data-toggle="modal" data-target="#generer_mdp"
                                 class="btn btn-primary btn-sm shadow-none">Générer un mot de passe</button>
-                            <button type="button" data-toggle="modal" data-target="#nouveau_cpl"
-                                class="btn btn-primary btn-sm shadow-none nouveau_cpl">Nouveau</button>
+                            <button type="button" data-toggle="modal" data-target="#ajout_mdp"
+                                class="btn btn-primary btn-sm shadow-none ajout_mdp">Nouveau</button>
                         </div>
                     </div>
-                    <div class="card-header div_info_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-
+                    <div class="card-header div_info_user col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="table-responsive">
+                            <table id="table_id_mdp" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Site</th>
+                                        <th scope="col">Adresse URL</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Mot de passe</th>
+                                        <th scope="col"></th>
+                                        <!-- <th scope="col"></th> -->
+                                        <!-- <th scope="col"></th> -->
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
    
+    <!-------------------------------------------------------------------------------------------------------------- 
+    ------------------------------------------- modal ajout de mot de passe ----------------------------------------
+    ---------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="ajout_mdp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajout de mot de passe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <!--SITE INTERNET-->
+                            <div class="form-group">
+                                <label class="titre_input" for="nom_site">Nom Site Internet <i>(ex : facebook)</i></label>
+                                <input type="text" class="shadow-none form-control form-control-user" name="nom_site"
+                                    id="nom_site" placeholder="Nom Site Internet"></input>
+                            </div>
+
+                            <!--SITE INTERNET-->
+                             <div class="form-group">
+                                <label class="titre_input" for="nom_site">Adresse URL Site Internet <i>(ex : www.facebook.com)</i></label>
+                                <input type="text" class="shadow-none form-control form-control-user" name="adresse_site"
+                                    id="adresse_site" placeholder="Adresse URL Site Internet"></input>
+                            </div>
+
+                            <!--ADRESSE E-MAIL/IDENTIFIANT-->
+                            <div class="form-group">
+                                <label class="titre_input" for="id_save">Adresse E-mail / Identifiant</label>
+                                <input type="email" class="shadow-none form-control form-control-user"
+                                    name="id_save" id="id_save" placeholder="Adresse E-mail / Identifiant"></input>
+                            </div>
+
+                            <!--MOT DE PASSE-->
+                            <div class="form-group">
+                                <label class="titre_input" for="mdp_save">Mot de passe</label>
+                                <input type="password" class="shadow-none form-control form-control-user"
+                                    name="mdp_save" id="mdp_save" placeholder="Mot de passe"></input>
+                            </div>
+
+                            <div class="modal-footer">
+                                <label id='erreur'></label>   
+                                <button type="button" id="ajout_mdp_button" class="btn btn-primary btn-sm shadow-none">Modifier</button>
+                            </div>    
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-------------------------------------------------------------------------------------------------------------- 
     ----------------------------------------- modal génerer un mot de passe ----------------------------------------
     ---------------------------------------------------------------------------------------------------------------->
@@ -146,6 +216,8 @@
     <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="content/js/sleep.js"></script>
     <script src="content/js/generate_password.js"></script>
+    <script src="content/js/chiffer_dechiffrer_mdp.js"></script>
+    <script src="content/js/add_password.js"></script>
 </body>
 
 </html>
