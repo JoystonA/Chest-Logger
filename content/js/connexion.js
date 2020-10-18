@@ -3,6 +3,7 @@ var inputUsername = document.getElementById('inputUsername');
 var inputPassword = document.getElementById('inputPassword');
 var connexion = document.getElementById('connexion');
 var erreur = document.getElementById('erreur');
+var register = document.getElementById('register');
 
 /* ------------------------- TRAITEMENTS --------------------------------*/
 connexion.addEventListener('click',function(){
@@ -30,3 +31,10 @@ connexion.addEventListener('click',function(){
     }   
 })
 
+if((localStorage.getItem('email')&&localStorage.getItem('mdp_user'))!=null){
+    register.style.display = "none"
+}
+
+register.addEventListener("click",function(){
+    window.location="register.html"
+})
