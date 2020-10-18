@@ -98,10 +98,6 @@ function generate_password(lenght,numbers,symbols,lowercase,uppercase){
     }
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 $(document).ready(function() {
     const $valueSpan = $('.valueSpan');
     const $value = $('#slider');
