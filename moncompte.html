@@ -182,9 +182,17 @@
     <script src="content/vendor/jquery/js/jquery-3.5.1.slim.min.js"></script>
     <script src="content/vendor/jquery/js/jquery-3.5.1.js"></script>
     <script src="content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="content/js/realtime.js"></script>
     <script src="content/js/sleep.js"></script>
     <script src="content/js/parametres.js"></script>
     <script src="content/js/hash.js"></script>
-
+    <script>
+        const ipc = require('electron').ipcRenderer
+        /*Click-droit*/
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+            ipc.send('show-context-menu')
+        })
+    </script>
 </body>
 </html>

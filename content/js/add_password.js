@@ -13,6 +13,9 @@ var ajout_mdp_button = document.getElementById('ajout_mdp_button')
 var modifier_mdp_button = document.getElementById('modifier_mdp_button')
 
 var erreur = document.getElementById('erreur')
+var erreur2 = document.getElementById('erreur2')
+
+var regex = /^[a-zA-Z0-9éèàêâùïüëçÀÂÉÈÊËÏÙÜ@\s-.:,'"–]{1,10000}$/
 
 var id_choice;
 /* ------------------------- TRAITEMENTS --------------------------------*/
@@ -23,15 +26,41 @@ ajout_mdp_button.addEventListener('click',function(){
     var name_mdp_enc = 'pwd_enc_'+nom_site.value
     var name_mdp_key = 'pwd_key_'+nom_site.value
 
-    var enc = encrypt(mdp_save.value);
+    if(verify_textarea(nom_site.value,regex,nom_site)&&verify_textarea(adresse_site.value,regex,adresse_site)&&verify_textarea(id_save.value,regex,id_save)){
+        var enc = encrypt(mdp_save.value);
 
-    localStorage.setItem(name_site, adresse_site.value)
-    localStorage.setItem(name_id, id_save.value)
-    localStorage.setItem(name_mdp_iv, enc.iv)
-    localStorage.setItem(name_mdp_enc, enc.encryptedData)
-    localStorage.setItem(name_mdp_key, enc.key)
-    window.location='index.html'
+        localStorage.setItem(name_site, adresse_site.value)
+        localStorage.setItem(name_id, id_save.value)
+        localStorage.setItem(name_mdp_iv, enc.iv)
+        localStorage.setItem(name_mdp_enc, enc.encryptedData)
+        localStorage.setItem(name_mdp_key, enc.key)
+        erreur.innerText="L'ajout du mot de passe a été enregistrée !"
+        erreur.style.fontWeight="bold"
+        erreur.style.color="green"
+        erreur.style.marginTop="10px"
+        sleep(500).then(() => {
+            window.location='index.html'
+        });  
+    }
+    else{
+        erreur.innerText="L'ajout du mot de passe a échouée !"
+        erreur.style.fontWeight="bold"
+        erreur.style.color="red"
+        erreur.style.marginTop="10px"
+    }
 })
+
+nom_site.addEventListener('keyup',function(event){
+    verify_textarea(nom_site.value,regex,nom_site)
+}) 
+
+adresse_site.addEventListener('keyup',function(event){
+    verify_textarea(adresse_site.value,regex,adresse_site)
+}) 
+
+id_save.addEventListener('keyup',function(event){
+    verify_textarea(id_save.value,regex,id_save)
+}) 
 
 var nbr_password=0;
 var entries = Object.entries(localStorage).length
@@ -168,6 +197,8 @@ if(id_mdp_array.length!=1) {
             adresse_site_modif.value=id_mdp_array[y][1]
             id_save_modif.value=id_mdp_array[y][3]
             id_choice = modifier_id_mdp[y].parentElement.parentElement.id
+            verify_textarea(adresse_site_modif.value,regex,adresse_site_modif)
+            verify_textarea(id_save_modif.value,regex,id_save_modif)
         })
     }
 }
@@ -178,21 +209,44 @@ else {
         adresse_site_modif.value=id_mdp_array[0][1]
         id_save_modif.value=id_mdp_array[0][3]
         id_choice = modifier_id_mdp.parentElement.parentElement.id
+        verify_textarea(adresse_site_modif.value,regex,adresse_site_modif)
+        verify_textarea(id_save_modif.value,regex,id_save_modif)
     })
     
 }   
 
-    modifier_mdp_button.addEventListener('click',function(){
+modifier_mdp_button.addEventListener('click',function(){
+    if(verify_textarea(adresse_site_modif.value,regex,adresse_site_modif)&&verify_textarea(id_save_modif.value,regex,id_save_modif)){
         var enc_modif = encrypt(mdp_save_modif.value)
-        
+    
         localStorage.setItem(id_mdp_array[id_choice][0], adresse_site_modif.value)
         localStorage.setItem(id_mdp_array[id_choice][2], id_save_modif.value)
         localStorage.setItem(id_mdp_array[id_choice][4], enc_modif.iv)
         localStorage.setItem(id_mdp_array[id_choice][6], enc_modif.encryptedData)
         localStorage.setItem(id_mdp_array[id_choice][8], enc_modif.key)
+        erreur2.innerText="La modification du mot de passe a été enregistrée !"
+        erreur2.style.fontWeight="bold"
+        erreur2.style.color="green"
+        erreur2.style.marginTop="10px"
+        sleep(500).then(() => {
+            window.location='index.html'
+        });  
+    }
+    else{
+        erreur2.innerText="La modification du mot de passe a échouée !"
+        erreur2.style.fontWeight="bold"
+        erreur2.style.color="red"
+        erreur2.style.marginTop="10px"
+    }
+})
 
-        window.location='index.html'
-    })
+adresse_site_modif.addEventListener('keyup',function(event){
+    verify_textarea(adresse_site_modif.value,regex,adresse_site_modif)
+}) 
+
+id_save_modif.addEventListener('keyup',function(event){
+    verify_textarea(id_save_modif.value,regex,id_save_modif)
+}) 
 
 
 /*SUPPRIMER MDP*/
