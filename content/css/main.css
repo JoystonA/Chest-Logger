@@ -314,3 +314,22 @@ button{
   color:grey;
   cursor: pointer;
 }
+
+/*----------------------------------------------------------------------------------*/
+/*----------------------------- Page Copyright -------------------------------------*/ 
+#about_body{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.about_us{
+  padding: 3% 3% 3% 3%;
+  font-family: 'CaviarDreams',Helvetica,Arial,sans-serif;
+  font-size: 0.9em; 
+  font-weight: bold;
+  color: #000000;
+}
+
+.link_about{
+  outline:none;
+}
