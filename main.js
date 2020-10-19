@@ -109,7 +109,7 @@ function openWindow(filename) {
                 darkTheme: true,
                 width: 500,
                 height: 175,
-                icon: path.join(__dirname, 'src/content/images/icone_black(50x50).png'),
+                icon: path.join(__dirname, 'content/img/logo.png'),
                 webPreferences: {
                     nodeIntegration: true
                 }
@@ -117,9 +117,11 @@ function openWindow(filename) {
             break;
         default:
             window = new BrowserWindow({
-                icon: path.join(__dirname, 'src/content/images/icone_black(50x50).png'),
-                minHeight: 480,
+                icon: path.join(__dirname, 'content/img/logo.png'),
+                minHeight: 580,
                 minWidth: 950,
+                width: 950,
+                height: 580,
                 darkTheme: true,
                 webPreferences: {
                     nodeIntegration: true
