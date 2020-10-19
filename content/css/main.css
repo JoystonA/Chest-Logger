@@ -78,6 +78,38 @@ body {
   }
 }
 
+::-webkit-scrollbar {
+  width     : 8px;
+  height    : 8px;
+  background: #D7E3EA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #261F3E;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #261F3E;
+}
+
+@keyframes progress {
+  from {
+      transform: scaleX(0);
+      opacity  : .1;
+  }
+
+  to {
+      transform: scaleX(1);
+  }
+}
+
+.side_bar_scroll{
+  height: 100px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
+
 .perso_no_margin {
   margin: 0;
 }

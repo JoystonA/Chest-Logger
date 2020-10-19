@@ -19,11 +19,17 @@ var id_choice;
 ajout_mdp_button.addEventListener('click',function(){
     var name_site = 'site_'+nom_site.value
     var name_id = 'id_'+nom_site.value
-    var name_mdp = 'pwd_'+nom_site.value
-    
+    var name_mdp_iv = 'pwd_iv_'+nom_site.value
+    var name_mdp_enc = 'pwd_enc_'+nom_site.value
+    var name_mdp_key = 'pwd_key_'+nom_site.value
+
+    var enc = encrypt(mdp_save.value);
+
     localStorage.setItem(name_site, adresse_site.value)
     localStorage.setItem(name_id, id_save.value)
-    localStorage.setItem(name_mdp, mdp_save.value)
+    localStorage.setItem(name_mdp_iv, enc.iv)
+    localStorage.setItem(name_mdp_enc, enc.encryptedData)
+    localStorage.setItem(name_mdp_key, enc.key)
     window.location='index.html'
 })
 
@@ -33,6 +39,8 @@ var id_mdp_array = new Array();
 let j = 0;
 let k = 0;
 let l = 0;
+let m = 0;
+let n = 0;
 
 /*NB PASSWORD*/
 for(let i=0;i<entries;i++){
@@ -58,10 +66,20 @@ for(let i=0;i<entries;i++){
         id_mdp_array[k][3]=Object.entries(localStorage).sort()[i][1]
         k++;
     }
-    if(Object.entries(localStorage).sort()[i][0].substring(0,3)=='pwd'){
+    if(Object.entries(localStorage).sort()[i][0].substring(0,6)=='pwd_iv'){
         id_mdp_array[l][4]=Object.entries(localStorage).sort()[i][0]
         id_mdp_array[l][5]=Object.entries(localStorage).sort()[i][1]
         l++;
+    }
+    if(Object.entries(localStorage).sort()[i][0].substring(0,7)=='pwd_enc'){
+        id_mdp_array[m][6]=Object.entries(localStorage).sort()[i][0]
+        id_mdp_array[m][7]=Object.entries(localStorage).sort()[i][1]
+        m++;
+    }
+    if(Object.entries(localStorage).sort()[i][0].substring(0,7)=='pwd_key'){
+        id_mdp_array[n][8]=Object.entries(localStorage).sort()[i][0]
+        id_mdp_array[n][9]=Object.entries(localStorage).sort()[i][1]
+        n++;
     }
 }
 
@@ -122,40 +140,81 @@ for(x=0;x<id_mdp_array.length;x++){
 }
  
 /*VOIR MDP*/
-for(let y=0;y<id_mdp_array.length;y++){
-    voir_mdp[y].addEventListener('click',function(){
-        mdp[y].innerText = id_mdp_array[y][5]
+if(id_mdp_array.length!=1) {
+    for(let y=0;y<id_mdp_array.length;y++){
+        voir_mdp[y].addEventListener('click',function(){
+            mdp[y].innerText = decrypt({iv: id_mdp_array[y][5], encryptedData: id_mdp_array[y][7], key: id_mdp_array[y][9]})
+            sleep(3000).then(() => {
+                mdp[y].innerText = '●●●●●●●●●●●'
+            });
+        })
+    }
+}
+else{
+    voir_mdp.addEventListener('click',function(){
+        mdp.innerText = decrypt({iv: id_mdp_array[0][5], encryptedData: id_mdp_array[0][7], key: id_mdp_array[0][9]})
         sleep(3000).then(() => {
-            mdp[y].innerText = '●●●●●●●●●●●'
+            mdp.innerText = '●●●●●●●●●●●'
         });
     })
 }
 
 /*MODIFIER MDP*/
-for(let y=0;y<id_mdp_array.length;y++){
-    modifier_id_mdp[y].addEventListener('click',function(){
-        $('#modifier_mdp').modal('show');
-        nom_site_modif.value=id_mdp_array[y][0].substring(5,id_mdp_array[y][0].length)
-        adresse_site_modif.value=id_mdp_array[y][1]
-        id_save_modif.value=id_mdp_array[y][3]
-        mdp_save_modif.value=id_mdp_array[y][5]
-        id_choice = modifier_id_mdp[y].parentElement.parentElement.id
-    })
+if(id_mdp_array.length!=1) {
+    for(let y=0;y<id_mdp_array.length;y++){
+        modifier_id_mdp[y].addEventListener('click',function(){
+            $('#modifier_mdp').modal('show');
+            nom_site_modif.value=id_mdp_array[y][0].substring(5,id_mdp_array[y][0].length)
+            adresse_site_modif.value=id_mdp_array[y][1]
+            id_save_modif.value=id_mdp_array[y][3]
+            id_choice = modifier_id_mdp[y].parentElement.parentElement.id
+        })
+    }
 }
+else {
+    modifier_id_mdp.addEventListener('click',function(){
+        $('#modifier_mdp').modal('show');
+        nom_site_modif.value=id_mdp_array[0][0].substring(5,id_mdp_array[0][0].length)
+        adresse_site_modif.value=id_mdp_array[0][1]
+        id_save_modif.value=id_mdp_array[0][3]
+        id_choice = modifier_id_mdp.parentElement.parentElement.id
+    })
+    
+}   
 
-modifier_mdp_button.addEventListener('click',function(){
-    localStorage.setItem(id_mdp_array[id_choice][0], adresse_site_modif.value)
-    localStorage.setItem(id_mdp_array[id_choice][2], id_save_modif.value)
-    localStorage.setItem(id_mdp_array[id_choice][4], mdp_save_modif.value)
-    window.location='index.html'
-})
+    modifier_mdp_button.addEventListener('click',function(){
+        var enc_modif = encrypt(mdp_save_modif.value)
+        
+        localStorage.setItem(id_mdp_array[id_choice][0], adresse_site_modif.value)
+        localStorage.setItem(id_mdp_array[id_choice][2], id_save_modif.value)
+        localStorage.setItem(id_mdp_array[id_choice][4], enc_modif.iv)
+        localStorage.setItem(id_mdp_array[id_choice][6], enc_modif.encryptedData)
+        localStorage.setItem(id_mdp_array[id_choice][8], enc_modif.key)
+
+        window.location='index.html'
+    })
+
 
 /*SUPPRIMER MDP*/
-for(let y=0;y<id_mdp_array.length;y++){
-    supprimer_id_mdp[y].addEventListener('click',function(){
-        window.localStorage.removeItem(id_mdp_array[y][0]);
-        window.localStorage.removeItem(id_mdp_array[y][2]);
-        window.localStorage.removeItem(id_mdp_array[y][4]);
+if(id_mdp_array.length!=1) {
+    for(let y=0;y<id_mdp_array.length;y++){
+        supprimer_id_mdp[y].addEventListener('click',function(){
+            window.localStorage.removeItem(id_mdp_array[y][0]);
+            window.localStorage.removeItem(id_mdp_array[y][2]);
+            window.localStorage.removeItem(id_mdp_array[y][4]);
+            window.localStorage.removeItem(id_mdp_array[y][6]);
+            window.localStorage.removeItem(id_mdp_array[y][8]);
+            window.location='index.html'
+        })
+    }
+}
+else{
+    supprimer_id_mdp.addEventListener('click',function(){
+        window.localStorage.removeItem(id_mdp_array[0][0]);
+        window.localStorage.removeItem(id_mdp_array[0][2]);
+        window.localStorage.removeItem(id_mdp_array[0][4]);
+        window.localStorage.removeItem(id_mdp_array[0][6]);
+        window.localStorage.removeItem(id_mdp_array[0][8]);
         window.location='index.html'
     })
 }

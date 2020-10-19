@@ -1,43 +1,154 @@
-const { app, BrowserWindow } = require('electron')
+const electron = require('electron')
+const url = require('url')
+const path = require('path')
+var fs = require('fs')
+const MenuItem = electron.MenuItem
+const ipc = electron.ipcMain
+const { BrowserWindow, Menu, dialog, app} = electron
+let window;
 
-function createWindow () {
-  // Create the browser window.
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true
+class Window {
+    constructor(pName) {
+        this.aName = pName;
+        this.aIsOpen = false;
+        this.aWindowObject = null;
     }
-  })
+    get name() {
+        return this.aName;
+    }
 
-  // and load the index.html of the app.
-  win.loadFile('connexion.html')
+    get isOpen() {
+        return this.aIsOpen;
+    }
 
-  // Open the DevTools.
-  win.webContents.openDevTools()
+    get windowObject() {
+        return this.aWindowObject;
+    }
+
+    loadWindowObject(pWindowObject) {
+        this.aWindowObject = pWindowObject;
+        this.aWindowObject.on('closed', () => {
+            this.aWindowObject = null;
+            this.aIsOpen = false;
+        });
+    }
+
+    open() {
+        this.aIsOpen = true;
+    }
+
+    close() {
+        this.aIsOpen = false;
+    }
+
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow)
+const aboutWindow = new Window('about');
+const accueilWindow = new Window('connexion');
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+app.on('ready', () => {
+    if (!accueilWindow.isOpen) {
+        accueilWindow.loadWindowObject(openWindow(accueilWindow.name));
+        accueilWindow.open();
+        createIndexMenu();
+    }
+});
+
+function createIndexMenu() {
+    var indexMenu = Menu.buildFromTemplate(
+        [{
+                label: 'Fichier',
+                submenu: [
+                    {
+                        label: 'Quitter',
+                        click() {
+                            app.quit();
+                        },
+                        accelerator: 'CmdOrCtrl+Shift+Q'
+                    }
+                ]
+            },
+            {
+                label: 'Edition',
+                submenu: [
+                    {label: 'Copier', role: 'copy'},
+                    {label: 'Coller', role: 'paste'}
+                ]
+            },
+            {
+                label: 'A propos',
+                submenu: [{
+                    label: '?',
+                    click() {
+                        clickAbout()
+                    }
+                }]
+            }
+        ]);
+    Menu.setApplicationMenu(indexMenu);
+}
+
+function clickAbout() {
+    if (!aboutWindow.isOpen) {
+        aboutWindow.loadWindowObject(openWindow(aboutWindow.name));
+        aboutWindow.open();
+        createIndexMenu();
+    }
+}
+
+function openWindow(filename) {
+    switch (filename) {
+        case 'about':
+            window = new BrowserWindow({
+                maximizable: false,
+                minimizable: false,
+                fullscreenable: false,
+                resizable: false,
+                autoHideMenuBar: true,
+                parent: accueilWindow.windowObject,
+                darkTheme: true,
+                width: 500,
+                height: 175,
+                icon: path.join(__dirname, 'src/content/images/icone_black(50x50).png'),
+                webPreferences: {
+                    nodeIntegration: true
+                }
+            });
+            break;
+        default:
+            window = new BrowserWindow({
+                icon: path.join(__dirname, 'src/content/images/icone_black(50x50).png'),
+                minHeight: 480,
+                minWidth: 950,
+                darkTheme: true,
+                webPreferences: {
+                    nodeIntegration: true
+                }
+            });
+            break;
+    }
+
+    window.loadURL(url.format({
+        pathname: path.join(__dirname,filename + '.html'),
+        protocol: 'file',
+        slashes: true
+    }));
+
+    window.webContents.openDevTools();
+
+    window.on('closed', () => {
+        window = null;
+    });
+
+    return window;
+
+};
+
+const right_click = new Menu()
+right_click.append(new MenuItem({role: 'copy',label:'Copy                 ',accelerator:'CmdOrCtrl+C'}))
+right_click.append(new MenuItem({type: 'separator' }))
+right_click.append(new MenuItem({role: 'paste',label:'Paste                 ',accelerator:'CmdOrCtrl+V'}))
+ipc.on('show-context-menu', function (event) {
+    const win = BrowserWindow.fromWebContents(event.sender)
+    right_click.popup(win)
 })
-
-app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
-  }
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.

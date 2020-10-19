@@ -11,12 +11,13 @@ function encrypt(text) {
 
     encrypted = Buffer.concat([encrypted, cipher.final()]);
 
-    return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+    return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex'), key: key.toString('hex')};
 }
 
 function decrypt(text) {
     let iv = Buffer.from(text.iv, 'hex');
     let encryptedText = Buffer.from(text.encryptedData, 'hex');
+    let key = Buffer.from(text.key, 'hex');
 
     let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), iv);
 
