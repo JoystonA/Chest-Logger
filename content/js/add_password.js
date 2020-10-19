@@ -3,9 +3,18 @@ var nom_site = document.getElementById('nom_site')
 var adresse_site = document.getElementById('adresse_site')
 var id_save = document.getElementById('id_save')
 var mdp_save = document.getElementById('mdp_save')
+
+var nom_site_modif = document.getElementById('nom_site_modif')
+var adresse_site_modif = document.getElementById('adresse_site_modif')
+var id_save_modif = document.getElementById('id_save_modif')
+var mdp_save_modif = document.getElementById('mdp_save_modif')
+
 var ajout_mdp_button = document.getElementById('ajout_mdp_button')
+var modifier_mdp_button = document.getElementById('modifier_mdp_button')
+
 var erreur = document.getElementById('erreur')
 
+var id_choice;
 /* ------------------------- TRAITEMENTS --------------------------------*/
 ajout_mdp_button.addEventListener('click',function(){
     var name_site = 'site_'+nom_site.value
@@ -45,11 +54,13 @@ for(let i=0;i<entries;i++){
         j++
     }
     if(Object.entries(localStorage).sort()[i][0].substring(0,2)=='id'){
-        id_mdp_array[k][2]=Object.entries(localStorage).sort()[i][1]
+        id_mdp_array[k][2]=Object.entries(localStorage).sort()[i][0]
+        id_mdp_array[k][3]=Object.entries(localStorage).sort()[i][1]
         k++;
     }
     if(Object.entries(localStorage).sort()[i][0].substring(0,3)=='pwd'){
-        id_mdp_array[l][3]=Object.entries(localStorage).sort()[i][1]
+        id_mdp_array[l][4]=Object.entries(localStorage).sort()[i][0]
+        id_mdp_array[l][5]=Object.entries(localStorage).sort()[i][1]
         l++;
     }
 }
@@ -65,16 +76,16 @@ for(x=0;x<id_mdp_array.length;x++){
     var td_pwd = document.createElement('td');
     var td_button_eye = document.createElement('td');
     //var td_button_copy = document.createElement('td');
-    //var td_button_pencil = document.createElement('td');
-    //var td_button_trash = document.createElement('td');
+    var td_button_pencil = document.createElement('td');
+    var td_button_trash = document.createElement('td');
     var i_eye = document.createElement('i');
     //var i_copy = document.createElement('i');
-    //var i_pencil = document.createElement('i');
-    //var i_trash = document.createElement('i');
+    var i_pencil = document.createElement('i');
+    var i_trash = document.createElement('i');
 
     td_site.innerText = id_mdp_array[x][0].substring(5,id_mdp_array[x][0].length)
     td_url.innerText = id_mdp_array[x][1]
-    td_id.innerText = id_mdp_array[x][2]
+    td_id.innerText = id_mdp_array[x][3]
     td_pwd.innerText = "●●●●●●●●●●●"//id_mdp_array[x][3]
 
     td_pwd.setAttribute('id','mdp')
@@ -83,19 +94,20 @@ for(x=0;x<id_mdp_array.length;x++){
     i_eye.setAttribute('id','voir_mdp')
 
     //i_copy.setAttribute('class','fas fa-copy perso_eye')
-    // i_copy.setAttribute('id','copy_mdp')
+    //i_copy.setAttribute('id','copy_mdp')
     //i_copy.setAttribute('data-target',"#mdp")
 
-    //i_pencil.setAttribute('class','fas fa-pencil-alt perso_pencil')
-    //i_pencil.setAttribute('id','modifier_id_mdp')
+    i_pencil.setAttribute('class','fas fa-pencil-alt perso_pencil')
+    i_pencil.setAttribute('id','modifier_id_mdp')
+    //i_pencil.setAttribute('data-target',"#modifier_mdp")
 
-    //i_trash.setAttribute('class','fas fa-trash-alt perso_trash')
-    //i_trash.setAttribute('id','supprimer_id_mdp')
+    i_trash.setAttribute('class','fas fa-trash-alt perso_trash')
+    i_trash.setAttribute('id','supprimer_id_mdp')
 
     td_button_eye.appendChild(i_eye)
     //td_button_copy.appendChild(i_copy)
-    //td_button_pencil.appendChild(i_pencil)
-    //td_button_trash.appendChild(i_trash)
+    td_button_pencil.appendChild(i_pencil)
+    td_button_trash.appendChild(i_trash)
 
     tr.appendChild(td_site)
     tr.appendChild(td_url)
@@ -103,8 +115,8 @@ for(x=0;x<id_mdp_array.length;x++){
     tr.appendChild(td_pwd)
     tr.appendChild(td_button_eye)
     //tr.appendChild(td_button_copy)
-    //tr.appendChild(td_button_pencil)
-    //tr.appendChild(td_button_trash)
+    tr.appendChild(td_button_pencil)
+    tr.appendChild(td_button_trash)
 
     table_id_mdp.appendChild(tr)
 }
@@ -112,12 +124,38 @@ for(x=0;x<id_mdp_array.length;x++){
 /*VOIR MDP*/
 for(let y=0;y<id_mdp_array.length;y++){
     voir_mdp[y].addEventListener('click',function(){
-        mdp[y].innerText = id_mdp_array[y][3]
+        mdp[y].innerText = id_mdp_array[y][5]
         sleep(3000).then(() => {
             mdp[y].innerText = '●●●●●●●●●●●'
         });
     })
 }
 
-/*COPY MDP*/
+/*MODIFIER MDP*/
+for(let y=0;y<id_mdp_array.length;y++){
+    modifier_id_mdp[y].addEventListener('click',function(){
+        $('#modifier_mdp').modal('show');
+        nom_site_modif.value=id_mdp_array[y][0].substring(5,id_mdp_array[y][0].length)
+        adresse_site_modif.value=id_mdp_array[y][1]
+        id_save_modif.value=id_mdp_array[y][3]
+        mdp_save_modif.value=id_mdp_array[y][5]
+        id_choice = modifier_id_mdp[y].parentElement.parentElement.id
+    })
+}
 
+modifier_mdp_button.addEventListener('click',function(){
+    localStorage.setItem(id_mdp_array[id_choice][0], adresse_site_modif.value)
+    localStorage.setItem(id_mdp_array[id_choice][2], id_save_modif.value)
+    localStorage.setItem(id_mdp_array[id_choice][4], mdp_save_modif.value)
+    window.location='index.html'
+})
+
+/*SUPPRIMER MDP*/
+for(let y=0;y<id_mdp_array.length;y++){
+    supprimer_id_mdp[y].addEventListener('click',function(){
+        window.localStorage.removeItem(id_mdp_array[y][0]);
+        window.localStorage.removeItem(id_mdp_array[y][2]);
+        window.localStorage.removeItem(id_mdp_array[y][4]);
+        window.location='index.html'
+    })
+}

@@ -75,8 +75,8 @@
                                         <th scope="col">ID</th>
                                         <th scope="col">Mot de passe</th>
                                         <th scope="col"></th>
-                                        <!-- <th scope="col"></th> -->
-                                        <!-- <th scope="col"></th> -->
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -113,7 +113,7 @@
 
                             <!--SITE INTERNET-->
                              <div class="form-group">
-                                <label class="titre_input" for="nom_site">Adresse URL Site Internet <i>(ex : www.facebook.com)</i></label>
+                                <label class="titre_input" for="adresse_site">Adresse URL Site Internet <i>(ex : www.facebook.com)</i></label>
                                 <input type="text" class="shadow-none form-control form-control-user" name="adresse_site"
                                     id="adresse_site" placeholder="Adresse URL Site Internet"></input>
                             </div>
@@ -134,7 +134,62 @@
 
                             <div class="modal-footer">
                                 <label id='erreur'></label>   
-                                <button type="button" id="ajout_mdp_button" class="btn btn-primary btn-sm shadow-none">Modifier</button>
+                                <button type="button" id="ajout_mdp_button" class="btn btn-primary btn-sm shadow-none">Ajouter</button>
+                            </div>    
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------------------------------------------------------------------------------- 
+    ---------------------------------------- modal modification de mot de passe ------------------------------------
+    ---------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="modifier_mdp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modification de mot de passe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <fieldset>
+                            <!--SITE INTERNET-->
+                            <div class="form-group">
+                                <label class="titre_input" for="nom_site_modif">Nom Site Internet <i>(ex : facebook)</i></label>
+                                <input type="text" class="shadow-none form-control form-control-user" name="nom_site_modif"
+                                    id="nom_site_modif" placeholder="Nom Site Internet" readonly></input>
+                            </div>
+
+                            <!--SITE INTERNET-->
+                             <div class="form-group">
+                                <label class="titre_input" for="adresse_site_modif">Adresse URL Site Internet <i>(ex : www.facebook.com)</i></label>
+                                <input type="text" class="shadow-none form-control form-control-user" name="adresse_site_modif"
+                                    id="adresse_site_modif" placeholder="Adresse URL Site Internet"></input>
+                            </div>
+
+                            <!--ADRESSE E-MAIL/IDENTIFIANT-->
+                            <div class="form-group">
+                                <label class="titre_input" for="id_save_modif">Adresse E-mail / Identifiant</label>
+                                <input type="email" class="shadow-none form-control form-control-user"
+                                    name="" id="id_save_modif" placeholder="Adresse E-mail / Identifiant"></input>
+                            </div>
+
+                            <!--MOT DE PASSE-->
+                            <div class="form-group">
+                                <label class="titre_input" for="mdp_save_modif">Mot de passe</label>
+                                <input type="password" class="shadow-none form-control form-control-user"
+                                    name="mdp_save_modif" id="mdp_save_modif" placeholder="Mot de passe"></input>
+                            </div>
+
+                            <div class="modal-footer">
+                                <label id='erreur'></label>   
+                                <button type="button" id="modifier_mdp_button" class="btn btn-primary btn-sm shadow-none">Modifier</button>
                             </div>    
                         </fieldset>
                     </form>
