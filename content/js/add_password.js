@@ -15,6 +15,7 @@ ajout_mdp_button.addEventListener('click',function(){
     localStorage.setItem(name_site, adresse_site.value)
     localStorage.setItem(name_id, id_save.value)
     localStorage.setItem(name_mdp, mdp_save.value)
+    window.location='index.html'
 })
 
 var nbr_password=0;

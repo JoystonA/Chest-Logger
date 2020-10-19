@@ -162,30 +162,20 @@ body {
   }
 }
 
-.mdp{
-  padding-top: 7px;
-  padding-bottom: 25px;
-}
-
-.mdp a{
-  color: #9BB8CA;
-  font-size: 15px;
-}
-
 .mb-4{
 margin-bottom: 40px !important;
 position: static;
 }
 
 .connexion_page{
-  background: url(../img/slide6.png) no-repeat center center fixed; 
+  background: url(../img/slide12.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.title_app_login{
+.title_app_login,.title_app_login:hover{
   font-family: 'Unique';
   color: white;
 }
@@ -206,10 +196,6 @@ position: static;
 }
 /*-------------------------------------------------------------*/
 /*--------------------------- TOP BAR -------------------------*/ 
-.topbar_bg_color{
-  background-color: #00274E;
-}
-
 .logo, .title_app{
   opacity: 0.75;
 }
@@ -239,10 +225,14 @@ position: static;
 
 .image_barre{
   width:100%;
-  height: 80px;
-  background: url(../img/slide5.jpg) no-repeat center; 
+  height: 150px;
+  background: url(../img/slide12.jpg) no-repeat center; 
   background:auto;
   -webkit-background:auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   z-index: -1;	
 }
 
@@ -252,8 +242,8 @@ position: static;
   font-size: 2em; 
   text-decoration: underline;
   font-weight: bold;
-  margin-top: 8px;
-  padding-top:20px;
+  margin-top: -40px;
+  padding-top: 60px;
   color:#fff;
 }
 
