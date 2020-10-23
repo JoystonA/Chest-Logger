@@ -130,6 +130,8 @@ function openWindow(filename) {
             break;
     }
 
+    window.webContents.openDevTools();
+
     window.loadURL(url.format({
         pathname: path.join(__dirname,filename + '.html'),
         protocol: 'file',
